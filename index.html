@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="No Borders Rotaract is the first online global Rotaract club, founded in 2015. Fellowship through service, from anywhere in the world.">
+    <title>No Borders Rotaract Club | Home</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cranberry: #d41367;
+            --cranberry-dark: #b00f55;
+            --cranberry-light: #f7d6e6;
+            --blush: #fdf3f8;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.13), 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a:focus-visible,
+        button:focus-visible,
+        [tabindex]:focus-visible {
+            outline: 3px solid var(--cranberry);
+            outline-offset: 2px;
+        }
+
+        /* ==========================================================
+           HEADER (shared across all club pages)
+           ========================================================== */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 20px rgba(212,19,103,0.10);
+            border-bottom: 3px solid var(--cranberry);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .nav-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+        }
+
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--cranberry);
+            line-height: 1.2;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 14px;
+            text-decoration: none;
+            color: var(--cranberry);
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .nav-link:hover {
+            background: var(--cranberry-light);
+            color: var(--cranberry-dark);
+        }
+
+        .nav-link.active {
+            background: var(--cranberry-light);
+        }
+
+        .nav-dropdown-icon {
+            color: var(--cranberry);
+            font-size: 0.65rem;
+            transition: transform 0.25s;
+            line-height: 1;
+        }
+
+        .nav-item:hover .nav-dropdown-icon {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown-menu,
+        .nav-item:focus-within .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 11px 18px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background 0.18s, color 0.18s;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--cranberry-light);
+            color: var(--cranberry);
+        }
+
+        .nav-btn-join {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 18px;
+            background: var(--cranberry);
+            color: var(--white) !important;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+            box-shadow: 0 2px 10px rgba(212,19,103,0.28);
+            white-space: nowrap;
+        }
+
+        .nav-btn-join:hover {
+            background: var(--cranberry-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 18px rgba(212,19,103,0.38);
+            color: var(--white) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            border: none;
+            background: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .hamburger:hover {
+            background: var(--cranberry-light);
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cranberry);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            display: none;
+            background: var(--white);
+            border-top: 1px solid var(--gray-200);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .mobile-nav.open {
+            max-height: 700px;
+        }
+
+        .mobile-nav-inner {
+            padding: 12px 24px 20px;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--cranberry);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--gray-100);
+            transition: color 0.18s;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--cranberry-dark);
+        }
+
+        .mobile-dropdown-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .mobile-dropdown-content.open {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-item {
+            display: block;
+            padding: 10px 16px;
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+            transition: color 0.18s;
+        }
+
+        .mobile-dropdown-item:hover {
+            color: var(--cranberry);
+        }
+
+        .mobile-nav-join {
+            display: block;
+            margin-top: 16px;
+            padding: 12px 20px;
+            background: var(--cranberry);
+            color: var(--white);
+            border-radius: 25px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .mobile-nav-join:hover {
+            background: var(--cranberry-dark);
+        }
+
+        .nav-link-underline {
+            position: relative;
+        }
+
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: var(--cranberry);
+            border-radius: 1px;
+            transform: scaleX(0);
+            transition: transform 0.22s;
+        }
+
+        .nav-link-underline:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* ==========================================================
+           HERO (shared style with Club Leadership)
+           ========================================================== */
+
+        .hero {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--gray-900);
+        }
+
+        .hero-img {
+            width: 100%;
+            max-height: 520px;
+            object-fit: cover;
+            object-position: center 55%;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(212,19,103,0.18) 100%);
+            pointer-events: none;
+        }
+
+        /* ==========================================================
+           PAGE CONTENT
+           ========================================================== */
+
+        .band {
+            padding: 88px 24px;
+        }
+
+        .band-tint {
+            background: var(--blush);
+        }
+
+        .band-soft {
+            background: var(--gray-50);
+        }
+
+        .band-ruled {
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .wrap {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .wrap-narrow {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--cranberry);
+            line-height: 1.15;
+        }
+
+        /* Headline */
+
+        .intro {
+            padding: 80px 24px 88px;
+            text-align: center;
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: clamp(2.1rem, 5.4vw, 3.9rem);
+            line-height: 1.12;
+            letter-spacing: -0.01em;
+            color: var(--cranberry);
+            max-width: 15em;
+            margin: 0 auto;
+            text-wrap: balance;
+            animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+
+        .intro-founded {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 32px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+            color: var(--cranberry);
+            animation: rise 0.9s 0.18s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+
+        .intro-founded::before,
+        .intro-founded::after {
+            content: '';
+            flex: 0 0 56px;
+            height: 1px;
+            background: var(--cranberry);
+        }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Purpose */
+
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: 4fr 8fr;
+            gap: 56px;
+            align-items: start;
+        }
+
+        .purpose-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+            max-width: 36em;
+        }
+
+        /* Motto */
+
+        .motto-block {
+            text-align: center;
+        }
+
+        .motto {
+            margin: 36px 0 64px;
+            font-family: 'Playfair Display', serif;
+            color: var(--cranberry);
+            line-height: 1.12;
+        }
+
+        .motto-line {
+            display: block;
+            font-size: clamp(2.15rem, 5.2vw, 3.6rem);
+            font-style: italic;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-wrap: balance;
+        }
+
+        .motto-line + .motto-line {
+            margin-top: 0.14em;
+        }
+
+        .video-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-poster {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            border: 0;
+            background: #000;
+            cursor: pointer;
+            display: block;
+        }
+
+        .video-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.25s;
+        }
+
+        .video-poster:hover img {
+            opacity: 0.88;
+        }
+
+        .video-play {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 72px;
+            height: 50px;
+            border-radius: 14px;
+            background: var(--cranberry);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+            transform: translate(-50%, -50%);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .video-poster:hover .video-play {
+            background: var(--cranberry-dark);
+            transform: translate(-50%, -50%) scale(1.06);
+        }
+
+        .video-play svg {
+            width: 24px;
+            height: 24px;
+            margin-left: 3px;
+            fill: var(--white);
+        }
+
+        .video-link {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--cranberry);
+            text-decoration: none;
+            border-bottom: 1px solid var(--cranberry-light);
+            padding-bottom: 1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .video-link:hover {
+            color: var(--cranberry-dark);
+            border-color: var(--cranberry-dark);
+        }
+
+        .motto-video-link {
+            margin-top: 36px;
+        }
+
+        .meeting-desc + .video-link {
+            margin-top: 18px;
+        }
+
+        .motto-video {
+            max-width: 860px;
+            margin: 0 auto;
+            border-radius: 4px;
+            box-shadow: 14px 14px 0 var(--cranberry-light);
+        }
+
+        /* Background */
+
+        .background-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 64px;
+            margin-top: 48px;
+            align-items: start;
+        }
+
+        .background-lead {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+            font-weight: 600;
+            line-height: 1.38;
+            color: var(--gray-900);
+            padding-left: 24px;
+            border-left: 4px solid var(--cranberry);
+        }
+
+        .background-body p {
+            font-size: 1.0625rem;
+            line-height: 1.85;
+            color: var(--gray-700);
+        }
+
+        .background-body p + p {
+            margin-top: 1.5em;
+        }
+
+        /* Past meetings */
+
+        .meetings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+            align-items: stretch;
+        }
+
+        .meeting {
+            display: flex;
+            flex-direction: column;
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-top: 3px solid var(--cranberry);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .meeting-body {
+            padding: 28px 30px 34px;
+        }
+
+        .meeting-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--cranberry);
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .meeting-desc {
+            font-size: 0.97rem;
+            line-height: 1.8;
+            color: var(--gray-700);
+        }
+
+        /* Closing + Instagram */
+
+        .closing {
+            text-align: center;
+        }
+
+        .closing-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+            line-height: 1.6;
+            color: var(--gray-900);
+            max-width: 30em;
+            margin: 0 auto;
+            text-wrap: pretty;
+        }
+
+        .instagram-frame {
+            max-width: 540px;
+            margin: 56px auto 0;
+            border: 1px solid var(--gray-200);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .instagram-frame iframe {
+            display: block;
+            width: 100%;
+            height: 720px;
+            border: 0;
+        }
+
+        .follow-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 32px;
+            padding: 14px 28px;
+            background: var(--cranberry);
+            color: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            box-shadow: 0 4px 16px rgba(212,19,103,0.28);
+            transition: background 0.22s, transform 0.22s, box-shadow 0.22s;
+        }
+
+        .follow-btn:hover {
+            background: var(--cranberry-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(212,19,103,0.40);
+        }
+
+        .follow-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .follow-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ==========================================================
+           FOOTER (shared across all club pages)
+           ========================================================== */
+
+        .footer {
+            background: var(--cranberry);
+            color: var(--white);
+            text-align: center;
+            padding: 28px 24px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .footer-text strong {
+            font-weight: 700;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 2px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 2px;
+            margin: 10px auto;
+        }
+
+        /* ==========================================================
+           RESPONSIVE
+           ========================================================== */
+
+        @media (max-width: 900px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero-img {
+                max-height: 380px;
+            }
+
+            .band {
+                padding: 72px 24px;
+            }
+
+            .purpose-grid,
+            .background-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .background-grid {
+                gap: 36px;
+            }
+
+            .meetings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                height: 60px;
+            }
+
+            .hero-img {
+                max-height: 260px;
+            }
+
+            .band {
+                padding: 56px 16px;
+            }
+
+            .intro {
+                padding: 56px 16px 64px;
+            }
+
+            .intro-founded::before,
+            .intro-founded::after {
+                flex-basis: 28px;
+            }
+
+            .purpose-text {
+                font-size: 1.1rem;
+            }
+
+            .motto {
+                margin: 28px 0 48px;
+            }
+
+            .motto-video {
+                box-shadow: 8px 8px 0 var(--cranberry-light);
+            }
+
+            .meeting-body {
+                padding: 22px 20px 28px;
+            }
+
+            .instagram-frame {
+                margin-top: 40px;
+            }
+
+            .instagram-frame iframe {
+                height: 640px;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .intro-title,
+            .intro-founded {
+                animation: none;
+            }
+
+            .follow-btn,
+            .video-poster img,
+            .video-play {
+                transition: none;
+            }
+        }
+
+        @media screen {
+            html.iframe-loaded .navbar {
+                display: none !important;
+            }
+
+            html.iframe-loaded body {
+                padding-top: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="https://www.nobordersrotaract.club/home" class="nav-logo" aria-label="Rotaract Club Home">
+                <div class="nav-logo-icon">
+                    <img src="https://iili.io/C4uPg3b.png" alt="No Borders Rotaract Club logo" />
+                </div>
+                <div>
+                    <div class="nav-logo-text">No Borders Rotaract</div>
+                </div>
+            </a>
+
+            <ul class="nav-menu" role="menubar">
+                <li class="nav-item" role="none">
+                    <a href="https://www.nobordersrotaract.club/home" class="nav-link nav-link-underline active" role="menuitem" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+                        About
+                        <span class="nav-dropdown-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                        <a href="https://www.nobordersrotaract.club/about/club-leadership" class="dropdown-item" role="menuitem">Club Leadership</a>
+                        <a href="https://www.nobordersrotaract.club/about/service" class="dropdown-item" role="menuitem">Service</a>
+                        <a href="https://www.nobordersrotaract.club/about/history" class="dropdown-item" role="menuitem">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" role="none">
+                    <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+                        Get Involved
+                        <span class="nav-dropdown-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="dropdown-menu" role="menu">
+                        <a href="https://www.nobordersrotaract.club/get-involved/activities" class="dropdown-item" role="menuitem">Activities</a>
+                        <a href="https://www.nobordersrotaract.club/get-involved/committees" class="dropdown-item" role="menuitem">Committees</a>
+                        <a href="https://www.nobordersrotaract.club/get-involved/fellowship" class="dropdown-item" role="menuitem">Fellowship</a>
+                        <a href="https://www.nobordersrotaract.club/get-involved/dues" class="dropdown-item" role="menuitem">Dues</a>
+                    </div>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="https://www.nobordersrotaract.club/contact-us" class="nav-link nav-link-underline" role="menuitem">Contact Us</a>
+                </li>
+                <li class="nav-item" role="none">
+                    <a href="https://www.nobordersrotaract.club/new-member-form-join-today"
+                       class="nav-btn-join" target="_blank" rel="noopener" role="menuitem">
+                        ✦ New Member Form — Join Today!
+                    </a>
+                </li>
+            </ul>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+            <div class="mobile-nav-inner">
+                <a href="https://www.nobordersrotaract.club/home" class="mobile-nav-link">Home</a>
+
+                <div class="mobile-nav-link mobile-dropdown-toggle" id="mobileAboutToggle" tabindex="0">
+                    <span>About</span>
+                    <span class="nav-dropdown-icon" style="color:var(--cranberry);">▼</span>
+                </div>
+                <div class="mobile-dropdown-content" id="mobileAboutMenu">
+                    <a href="https://www.nobordersrotaract.club/about/club-leadership" class="mobile-dropdown-item">Club Leadership</a>
+                    <a href="https://www.nobordersrotaract.club/about/service" class="mobile-dropdown-item">Service</a>
+                    <a href="https://www.nobordersrotaract.club/about/history" class="mobile-dropdown-item">History</a>
+                </div>
+
+                <div class="mobile-nav-link mobile-dropdown-toggle" id="mobileInvolvedToggle" tabindex="0">
+                    <span>Get Involved</span>
+                    <span class="nav-dropdown-icon" style="color:var(--cranberry);">▼</span>
+                </div>
+                <div class="mobile-dropdown-content" id="mobileInvolvedMenu">
+                    <a href="https://www.nobordersrotaract.club/get-involved/activities" class="mobile-dropdown-item">Activities</a>
+                    <a href="https://www.nobordersrotaract.club/get-involved/committees" class="mobile-dropdown-item">Committees</a>
+                    <a href="https://www.nobordersrotaract.club/get-involved/fellowship" class="mobile-dropdown-item">Fellowship</a>
+                    <a href="https://www.nobordersrotaract.club/get-involved/dues" class="mobile-dropdown-item">Dues</a>
+                </div>
+
+                <a href="https://www.nobordersrotaract.club/contact-us" class="mobile-nav-link">Contact Us</a>
+
+                <a href="https://www.nobordersrotaract.club/new-member-form-join-today"
+                   class="mobile-nav-join" target="_blank" rel="noopener">
+                    ✦ New Member Form — Join Today!
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="hero" aria-label="Hero banner">
+            <img
+                src="https://iili.io/nvLNTYJ.jpg"
+                alt="No Borders Rotaract Club banner"
+                class="hero-img"
+                loading="eager"
+            />
+            <div class="hero-overlay" aria-hidden="true"></div>
+        </section>
+
+        <section class="intro" aria-labelledby="intro-title">
+            <h1 class="intro-title" id="intro-title">Join the first Online Global Rotaract Club!</h1>
+            <p class="intro-founded">Founded in 2015</p>
+        </section>
+
+        <section class="band band-ruled" id="purpose" aria-labelledby="purpose-title">
+            <div class="wrap">
+                <div class="purpose-grid">
+                    <h2 class="section-title" id="purpose-title">Purpose</h2>
+                    <p class="purpose-text">Rotaract was founded in 1968 by Rotary International. Through Rotaract clubs, those ages 18 and older come together to bring about positive peace and change within our communities through service.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="band band-tint" id="motto" aria-labelledby="motto-title">
+            <div class="wrap-narrow motto-block">
+                <h2 class="section-title" id="motto-title">Our Motto</h2>
+                <p class="motto">
+                    <span class="motto-line">Fellowship Through Service</span>
+                    <span class="motto-line">and Service Above Self</span>
+                </p>
+                <div class="video-frame motto-video" data-video-id="6DIR8fr9VJA" data-title="No Borders Rotaract motto video">
+                    <button type="button" class="video-poster" aria-label="Play video: No Borders Rotaract motto video">
+                        <img src="https://i.ytimg.com/vi/6DIR8fr9VJA/maxresdefault.jpg" alt="" loading="lazy"
+                             onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/6DIR8fr9VJA/hqdefault.jpg'">
+                        <span class="video-play" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+                        </span>
+                    </button>
+                </div>
+                <a class="video-link motto-video-link" href="https://www.youtube.com/watch?v=6DIR8fr9VJA" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+            </div>
+        </section>
+
+        <section class="band" id="background" aria-labelledby="background-title">
+            <div class="wrap">
+                <h2 class="section-title" id="background-title">Our Background</h2>
+                <div class="background-grid">
+                    <p class="background-lead">Rotaract is a global movement and family of people developing innovative solutions to today's most pressing challenges!</p>
+                    <div class="background-body">
+                        <p>We bring together young professionals from across the world to exchange ideas, develop leadership and professional skills, and have fun through service.</p>
+                        <p>As an online global service club you can live anywhere and still be an active member of No Borders. We have two online meetings each month that focus on leadership, professional development skills, life hacks, updates on global humanitarian efforts, and advancements through Rotary. We also work together on projects in our local communities and abroad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="band band-soft" id="past-meetings" aria-labelledby="meetings-title">
+            <div class="wrap">
+                <h2 class="section-title" id="meetings-title">Past Meetings</h2>
+
+                <div class="meetings-grid">
+
+                    <article class="meeting">
+                        <div class="video-frame" data-video-id="9vrOc9aq__M" data-title="Stephanie Woollard talk on Seven Women">
+                            <button type="button" class="video-poster" aria-label="Play video: Stephanie Woollard talk on Seven Women">
+                                <img src="https://i.ytimg.com/vi/9vrOc9aq__M/maxresdefault.jpg" alt="" loading="lazy"
+                                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/9vrOc9aq__M/hqdefault.jpg'">
+                                <span class="video-play" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="meeting-body">
+                            <h3 class="meeting-name">Stephanie Woollard</h3>
+                            <p class="meeting-desc">In this talk, we learned about Seven Women from their CEO and Founder, Stephanie Woollard. Young Australian social entrepreneur Stephanie Woollard began Seven Women at only 22, after meeting seven disabled women operating out of a tin shed in Kathmandu struggling to make a living and enduring harsh discrimination. Since 2006, Seven Women has been working to empower marginalised Nepalese women through equipping them with the skills and know how to thrive.</p>
+                            <a class="video-link" href="https://www.youtube.com/watch?v=9vrOc9aq__M" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                        </div>
+                    </article>
+
+                    <article class="meeting">
+                        <div class="video-frame" data-video-id="oLcrwNV9xFY" data-title="Chris Jones talk on Rise Against Hunger">
+                            <button type="button" class="video-poster" aria-label="Play video: Chris Jones talk on Rise Against Hunger">
+                                <img src="https://i.ytimg.com/vi/oLcrwNV9xFY/maxresdefault.jpg" alt="" loading="lazy"
+                                     onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/oLcrwNV9xFY/hqdefault.jpg'">
+                                <span class="video-play" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="meeting-body">
+                            <h3 class="meeting-name">Chris Jones</h3>
+                            <p class="meeting-desc">Chris Jones spoke with the No Borders Rotaract about his work with Rise Against Hunger. Rise Against Hunger has partnered with Rotarians around the world to package over 30 million meals around the world. Check it out to learn more about Rise Against Hunger and their partnership with Rotary. Speaker is followed by Q&amp;A.</p>
+                            <a class="video-link" href="https://www.youtube.com/watch?v=oLcrwNV9xFY" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="band band-ruled closing" aria-label="Membership and Instagram">
+            <div class="wrap-narrow">
+                <p class="closing-text">Members of our club have a unique opportunity to be part of the Rotary Family without joining a formal, in-person club. Members will have opportunities to make friends, grow their professional skills, and participate in community and international service.</p>
+
+                <div class="instagram-frame">
+                    <iframe
+                        src="https://www.instagram.com/no_borders_rotaract/embed"
+                        title="No Borders Rotaract on Instagram"
+                        loading="lazy"
+                        allowtransparency="true"></iframe>
+                </div>
+
+                <a href="https://www.instagram.com/no_borders_rotaract/"
+                   class="follow-btn"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Follow No Borders Rotaract on Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Follow on Instagram
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer" id="footer" role="contentinfo">
+        <p class="footer-text">
+            <strong>2015–2026</strong>
+        </p>
+        <p class="footer-text">
+            &copy; No Borders Rotaract Club &nbsp;|&nbsp; Developed by <strong>Thiago Freitas</strong>
+        </p>
+    </footer>
+
+    <script>
+        if (window.self !== window.top) {
+            document.documentElement.classList.add('iframe-loaded');
+        }
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', function () {
+            const isOpen = mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen.toString());
+            mobileNav.setAttribute('aria-hidden', (!isOpen).toString());
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileNav.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        function setupMobileDropdown(toggleId, menuId) {
+            const toggle = document.getElementById(toggleId);
+            const menu = document.getElementById(menuId);
+            if (!toggle || !menu) return;
+
+            const icon = toggle.querySelector('.nav-dropdown-icon');
+
+            toggle.addEventListener('click', function () {
+                const isOpen = menu.classList.toggle('open');
+                if (icon) icon.style.transform = isOpen ? 'rotate(180deg)' : '';
+            });
+
+            toggle.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggle.click();
+                }
+            });
+        }
+
+        setupMobileDropdown('mobileAboutToggle', 'mobileAboutMenu');
+        setupMobileDropdown('mobileInvolvedToggle', 'mobileInvolvedMenu');
+
+        mobileNav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                mobileNav.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.querySelectorAll('.video-frame[data-video-id]').forEach(function (frame) {
+            const poster = frame.querySelector('.video-poster');
+            if (!poster) return;
+
+            poster.addEventListener('click', function () {
+                const id = frame.dataset.videoId;
+                const origin = window.location.origin;
+                const params = new URLSearchParams({ autoplay: '1', rel: '0', playsinline: '1' });
+
+                if (origin && origin.indexOf('http') === 0) {
+                    params.set('origin', origin);
+                }
+
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube.com/embed/' + id + '?' + params.toString();
+                iframe.title = frame.dataset.title || 'Video player';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+                iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+                iframe.allowFullscreen = true;
+                frame.replaceChildren(iframe);
+            });
+        });
+
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+                navbar.style.boxShadow = '0 4px 24px rgba(212,19,103,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(212,19,103,0.10)';
+            }
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
